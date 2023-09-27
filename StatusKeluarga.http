@@ -1,11 +1,10 @@
-GET https://10.10.117.159:7184/api/status-keluarga
+GET http://10.10.117.159:5188/api/status-keluarga
 
 ###
-POST https://10.10.117.159:7184/api/status-keluarga
+POST http://10.10.117.159:5188/api/status-keluarga
 content-type: application/json
 {
     "statusKeluarga": "kakak",
-    "status": 1,
     "userCreated": "andry"
 }
 

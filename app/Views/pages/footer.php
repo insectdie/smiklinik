@@ -51,8 +51,9 @@
 
     <script src="<?= base_url() ?>/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/libs/tagify/tagify.js"></script>
-
     <script src="<?= base_url() ?>/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    
     <!-- Flat Picker -->
     <script src="<?= base_url() ?>/assets/vendor/libs/moment/moment.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/libs/flatpickr/flatpickr.js"></script>
@@ -67,6 +68,7 @@
     <!-- Page JS -->
     <script src="<?= base_url() ?>/assets/js/form-validation.js"></script>
     <script src="<?= base_url() ?>/assets/js/tables-datatables-basic.js"></script>
+    <script src="<?= base_url() ?>/assets/js/extended-ui-sweetalert2.js"></script>
 
     <script src="<?= base_url() ?>/assets/script/<?= $js ?>.js"></script>
     

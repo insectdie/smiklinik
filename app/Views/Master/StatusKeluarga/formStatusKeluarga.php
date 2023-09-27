@@ -16,11 +16,11 @@
                       <h5 class="mb-0"><?= $title ?></h5>
                     </div>
                     <div class="card-body">
-                      <form class="needs-validation" novalidate>
+                      <form>
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-default-name">Status Keluarga</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="basic-default-name" placeholder="Ayah" />
+                            <input type="text" class="form-control" id="ed_status_keluarga" placeholder="Ayah" />
                             <div class="invalid-feedback">Please enter your status keluarga.</div>
                           </div>
                         </div>
@@ -30,10 +30,10 @@
                           <div class="col-sm-10">
                               <div class="form-check mb-2">
                                 <input
-                                  name="collapsible-addressType"
+                                  name="ed_status"
                                   class="form-check-input"
                                   type="radio"
-                                  value=""
+                                  value="1"
                                   id="collapsible-addressType-home"
                                   checked="" />
                                 <label class="form-check-label" for="collapsible-addressType-home">
@@ -42,10 +42,10 @@
                               </div>
                               <div class="form-check">
                                 <input
-                                  name="collapsible-addressType"
+                                  name="ed_status"
                                   class="form-check-input"
                                   type="radio"
-                                  value=""
+                                  value="0"
                                   id="collapsible-addressType-office" />
                                 <label class="form-check-label" for="collapsible-addressType-office">
                                   Tidak Aktif
@@ -56,7 +56,7 @@
 
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button id="bt-save" class="btn btn-primary">Save</button>
                           </div>
                         </div>
                       </form>
@@ -66,13 +66,14 @@
 
                 <div class="col-xxl">
                   <div class="card mb-4">
-                  <div class="card-datatable table-responsive">
-                    <table id="example" class="table table-striped" style="width:100%">
+                  <div class="card-datatable">
+                    <table id="example" class="table" style="width:100%">
                       <thead>
                           <tr>
                               <th>No</th>
                               <th>Status Keluarga</th>
                               <th>Status</th>
+                              <th>Aksi</th>
                           </tr>
                       </thead>
                       <tbody>

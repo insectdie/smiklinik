@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
     <!-- Form Validation -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/libs/sweetalert2/sweetalert2.css">
 
     <!-- Page CSS -->
 
