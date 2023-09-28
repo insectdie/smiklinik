@@ -1,15 +1,15 @@
-// "url": "http://10.10.117.159:5188/api/status-keluarga",
+// "url": "http://10.10.117.159:5188/api/kelompok-pasien",
 $(document).ready(function() {
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "https://national-sharp-point-disable.trycloudflare.com/api/status-keluarga",
+            "url": "https://national-sharp-point-disable.trycloudflare.com/api/kelompok-pasien",
             "type": "GET",
             "dataType": "json",
         },
         "columns": [
             { "data": "id" },
-            { "data": "statusKeluarga" },
+            { "data": "kelompokPasien" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
                     } else {
                         return `<span class="badge rounded-pill bg-light">Tidak Aktif</span>`;
                     }
-                } 
+                }  
             },
             { 
                 "data": "aksi",
@@ -40,17 +40,17 @@ $(document).ready(function() {
 
         var url, type, action;
         var data = {
-            statusKeluarga: $('#ed_status_keluarga').val(),
+            kelompokPasien: $('#ed_kelompok_pasien').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
         if (edit === false) {
-            url = 'https://national-sharp-point-disable.trycloudflare.com/api/status-keluarga';
+            url = 'https://national-sharp-point-disable.trycloudflare.com/api/kelompok-pasien';
             type = "POST";
             action = "simpan";
             data.userCreated = "andry";
         } else {
-            url = 'https://national-sharp-point-disable.trycloudflare.com/api/status-keluarga/' + id;
+            url = 'https://national-sharp-point-disable.trycloudflare.com/api/kelompok-pasien/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = "andry";
@@ -99,7 +99,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'https://national-sharp-point-disable.trycloudflare.com/api/status-keluarga/' + id,
+                    url: 'https://national-sharp-point-disable.trycloudflare.com/api/kelompok-pasien/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -134,7 +134,7 @@ $(document).ready(function() {
         edit = true;
 
         $.ajax({
-            url: 'https://national-sharp-point-disable.trycloudflare.com/api/status-keluarga/' + id,
+            url: 'https://national-sharp-point-disable.trycloudflare.com/api/kelompok-pasien/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -142,7 +142,7 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(res) {
-                $('#ed_status_keluarga').val(res.statusKeluarga);
+                $('#ed_kelompok_pasien').val(res.kelompokPasien);
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -155,7 +155,7 @@ $(document).ready(function() {
     });
 
     function clear() {
-        $("#ed_status_keluarga").val('');
+        $("#ed_kelompok_pasien").val('');
     }
 });
 

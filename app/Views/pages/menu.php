@@ -25,9 +25,9 @@
           <ul class="menu-inner py-1">
 
             <!-- Forms & Tables -->
-            <li class="menu-header fw-light mt-4">
+            <!-- <li class="menu-header fw-light mt-4">
               <span class="menu-header-text">Forms &amp; Tables</span>
-            </li>
+            </li> -->
             <!-- Tables -->
             <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -35,9 +35,24 @@
                 Master
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active">
-                  <a href="tables-datatables-basic.html" class="menu-link">
+                <li class="menu-item <?= ($title === 'Status Keluarga') ? 'active' : '' ?>">
+                  <a href="StatusKeluarga" class="menu-link">
                     Status Keluarga
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Kelompok Pasien') ? 'active' : '' ?>">
+                  <a href="KelompokPasien" class="menu-link">
+                    Kelompok Pasien
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Status Pendidikan') ? 'active' : '' ?>">
+                  <a href="StatusPendidikan" class="menu-link">
+                    Status Pendidikan
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Status Pekerjaan') ? 'active' : '' ?>">
+                  <a href="StatusPekerjaan" class="menu-link">
+                    Status Pekerjaan
                   </a>
                 </li>
                 <!-- <li class="menu-item">

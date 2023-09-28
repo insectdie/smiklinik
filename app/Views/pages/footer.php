@@ -66,8 +66,6 @@
     <script src="<?= base_url() ?>/assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="<?= base_url() ?>/assets/js/form-validation.js"></script>
-    <script src="<?= base_url() ?>/assets/js/tables-datatables-basic.js"></script>
     <script src="<?= base_url() ?>/assets/js/extended-ui-sweetalert2.js"></script>
 
     <script src="<?= base_url() ?>/assets/script/<?= $js ?>.js"></script>

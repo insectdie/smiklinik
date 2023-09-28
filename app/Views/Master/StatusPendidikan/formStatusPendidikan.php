@@ -18,10 +18,10 @@
                     <div class="card-body">
                       <form>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-default-name">Status Keluarga</label>
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Status Pendidikan</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="ed_status_keluarga" placeholder="Ayah" />
-                            <div class="invalid-feedback">Please enter your status keluarga.</div>
+                            <input type="text" class="form-control" id="ed_status_pendidikan" placeholder="S1" />
+                            <div class="invalid-feedback">Please enter your status pendidikan.</div>
                           </div>
                         </div>
 
@@ -71,7 +71,7 @@
                       <thead>
                           <tr>
                               <th>No</th>
-                              <th>Status Keluarga</th>
+                              <th>Status Pendidikan</th>
                               <th>Status</th>
                               <th>Aksi</th>
                           </tr>
