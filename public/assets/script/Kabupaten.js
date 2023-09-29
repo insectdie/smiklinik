@@ -1,5 +1,21 @@
 // "url": "http://10.10.117.159:5188/api/kabupaten",
 $(document).ready(function() {
+    
+    $.ajax({
+        type: 'GET', 
+        url: 'http://10.10.117.159:5188/api/provinsi', 
+        success: function(result) { 
+            var selOpts = "";
+            for (let i=0;i<result.data.length;i++)
+            {
+                var id = result.data[i]['id'];
+                var val = result.data[i]['provinsi'];
+                selOpts += "<option value='"+id+"'>"+val+"</option>";
+            }
+            $('#ed_provinsi').append(selOpts);
+        }
+    });
+
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
@@ -31,6 +47,13 @@ $(document).ready(function() {
                     `;
                 }
             }
+        ],
+        "columnDefs": [
+            {
+                "targets": [ 2 ],
+                "visible": false,
+                "searchable": false
+            }
         ]
     });
 
@@ -43,7 +66,7 @@ $(document).ready(function() {
         var url, type, action;
         var data = {
             kabupaten: $('#ed_kabupaten').val(),
-            provinsi: $('#ed_provinsi').val(),
+            idProvinsi: $('#ed_provinsi').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
@@ -146,7 +169,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(res) {
                 $('#ed_kabupaten').val(res.kabupaten);
-                $('#ed_provinsi').val(res.provinsi).trigge;
+                $('#ed_provinsi').val(res.idProvinsi).trigger('change');
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -160,6 +183,12 @@ $(document).ready(function() {
 
     function clear() {
         $("#ed_kabupaten").val('');
+        $("#ed_provinsi").val('').trigger('change');
+        $("#ed_status").val(1).trigger('change');
     }
+
+    $("#bt-cancel").on("click", function() {
+        clear();
+    });
 });
 

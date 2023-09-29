@@ -187,6 +187,11 @@ $(document).ready(function() {
         $('#ed_nama_pic').val('');
         $('#ed_no_hp_pic').val('');
         $('#ed_keterangan').val('');
+        $("#ed_status").val(1).trigger('change');
     }
+
+    $("#bt-cancel").on("click", function() {
+        clear();
+    });
 });
 

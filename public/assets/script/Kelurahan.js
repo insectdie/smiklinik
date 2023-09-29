@@ -1,5 +1,21 @@
 // "url": "http://10.10.117.159:5188/api/kelurahan",
 $(document).ready(function() {
+
+    $.ajax({
+        type: 'GET', 
+        url: 'http://10.10.117.159:5188/api/kecamatan', 
+        success: function(result) { 
+            var selOpts = "";
+            for (let i=0;i<result.data.length;i++)
+            {
+                var id = result.data[i]['id'];
+                var val = result.data[i]['kecamatan'];
+                selOpts += "<option value='"+id+"'>"+val+"</option>";
+            }
+            $('#ed_kecamatan').append(selOpts);
+        }
+    });
+
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
@@ -31,6 +47,13 @@ $(document).ready(function() {
                     `;
                 }
             }
+        ],
+        "columnDefs": [
+            {
+                "targets": [ 2 ],
+                "visible": false,
+                "searchable": false
+            }
         ]
     });
 
@@ -43,7 +66,7 @@ $(document).ready(function() {
         var url, type, action;
         var data = {
             kelurahan: $('#ed_kelurahan').val(),
-            kecamatan: $('#ed_kecamatan').val(),
+            idKecamatan: $('#ed_kecamatan').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
@@ -146,7 +169,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(res) {
                 $('#ed_kelurahan').val(res.kelurahan);
-                $('#ed_kecamatan').val(res.kecamatan).trigge;
+                $('#ed_kecamatan').val(res.idKecamatan).trigger('change');
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -160,6 +183,11 @@ $(document).ready(function() {
 
     function clear() {
         $("#ed_kelurahan").val('');
+        $("#ed_status").val(1).trigger('change');
     }
+
+    $("#bt-cancel").on("click", function() {
+        clear();
+    });
 });
 

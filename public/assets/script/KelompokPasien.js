@@ -156,6 +156,11 @@ $(document).ready(function() {
 
     function clear() {
         $("#ed_kelompok_pasien").val('');
+        $("#ed_status").val(1).trigger('change');
     }
+
+    $("#bt-cancel").on("click", function() {
+        clear();
+    });
 });
 

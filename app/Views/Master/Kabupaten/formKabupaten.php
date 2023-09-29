@@ -30,9 +30,6 @@
                           <div class="col-sm-10">
                             <select class="form-select" aria-label="Default select example" id="ed_provinsi" name = "ed_provinsi">
                                 <option selected>Pilih provinsi</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
                             </select>
                           </div>
                         </div>
@@ -66,9 +63,13 @@
                           </div>
                         </div>
 
-                        <div class="row justify-content-end">
-                          <div class="col-sm-10">
+                        <div class="row justify-content-start">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-1">
                             <button id="bt-save" class="btn btn-primary">Save</button>
+                          </div>
+                          <div class="col-sm-1">
+                            <button id="bt-cancel" class="btn btn-danger">Cancel</button>
                           </div>
                         </div>
                       </form>
@@ -86,6 +87,7 @@
                               <th>Kabupaten</th>
                               <th>ID Provinsi</th>
                               <th>Provinsi</th>
+                              <th>Status</th>
                               <th>Aksi</th>
                           </tr>
                       </thead>

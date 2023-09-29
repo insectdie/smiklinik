@@ -54,9 +54,13 @@
                           </div>
                         </div>
 
-                        <div class="row justify-content-end">
-                          <div class="col-sm-10">
+                        <div class="row justify-content-start">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-1">
                             <button id="bt-save" class="btn btn-primary">Save</button>
+                          </div>
+                          <div class="col-sm-1">
+                            <button id="bt-cancel" class="btn btn-danger">Cancel</button>
                           </div>
                         </div>
                       </form>
