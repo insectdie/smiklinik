@@ -50,11 +50,43 @@
                     Sub Kelompok Pasien
                   </a>
                 </li>
+                <li class="menu-item <?= ($title === 'Penanggung Biaya') ? 'active' : '' ?>">
+                  <a href="PenanggungBiaya" class="menu-link">
+                    Penanggung Biaya
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Asuransi') ? 'active' : '' ?>">
+                  <a href="Asuransi" class="menu-link">
+                    Asuransi
+                  </a>
+                </li>
                 <li class="menu-item <?= ($title === 'Status Pendidikan') ? 'active' : '' ?>">
                   <a href="StatusPendidikan" class="menu-link">
                     Status Pendidikan
                   </a>
                 </li>
+
+                <li class="menu-item <?= ($title === 'Provinsi') ? 'active' : '' ?>">
+                  <a href="Provinsi" class="menu-link">
+                    Provinsi
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Kabupaten') ? 'active' : '' ?>">
+                  <a href="Kabupaten" class="menu-link">
+                    Kabupaten
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Kecamatan') ? 'active' : '' ?>">
+                  <a href="Kecamatan" class="menu-link">
+                    Kecamatan
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Kelurahan') ? 'active' : '' ?>">
+                  <a href="Kelurahan" class="menu-link">
+                    Kelurahan
+                  </a>
+                </li>
+                
                 <li class="menu-item <?= ($title === 'Status Pekerjaan') ? 'active' : '' ?>">
                   <a href="StatusPekerjaan" class="menu-link">
                     Status Pekerjaan
@@ -63,16 +95,6 @@
                 <li class="menu-item <?= ($title === 'Agama') ? 'active' : '' ?>">
                   <a href="Agama" class="menu-link">
                     Agama
-                  </a>
-                </li>
-                <li class="menu-item <?= ($title === 'Penanggung Biaya') ? 'active' : '' ?>">
-                  <a href="PenanggungBiaya" class="menu-link">
-                    Penanggung Biaya
-                  </a>
-                </li>
-                <li class="menu-item <?= ($title === 'Provinsi') ? 'active' : '' ?>">
-                  <a href="Provinsi" class="menu-link">
-                    Provinsi
                   </a>
                 </li>
                 <li class="menu-item <?= ($title === 'Status Pernikahan') ? 'active' : '' ?>">

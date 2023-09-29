@@ -18,6 +18,10 @@ $routes->get('SubKelompokPasien', '\App\Controllers\SubKelompokPasien::index');
 $routes->get('Agama', '\App\Controllers\Agama::index');
 $routes->get('PenanggungBiaya', '\App\Controllers\PenanggungBiaya::index');
 $routes->get('Provinsi', '\App\Controllers\Provinsi::index');
+$routes->get('Kabupaten', '\App\Controllers\Kabupaten::index');
+$routes->get('Kecamatan', '\App\Controllers\Kecamatan::index');
+$routes->get('Kelurahan', '\App\Controllers\Kelurahan::index');
+$routes->get('Asuransi', '\App\Controllers\Asuransi::index');
 $routes->get('StatusPernikahan', '\App\Controllers\StatusPernikahan::index');
 
 // $routes->options('(:any)', 'Controller/options');

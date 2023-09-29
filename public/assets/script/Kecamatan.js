@@ -1,15 +1,17 @@
-// "url": "http://10.10.117.159:5188/api/kelompok-pasien",
+// "url": "http://10.10.117.159:5188/api/kecamatan",
 $(document).ready(function() {
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "http://10.10.117.159:5188/api/kelompok-pasien",
+            "url": "http://10.10.117.159:5188/api/kecamatan",
             "type": "GET",
             "dataType": "json",
         },
         "columns": [
             { "data": "id" },
-            { "data": "kelompokPasien" },
+            { "data": "kecamatan" },
+            { "data": "idKabupaten" },
+            { "data": "kabupaten" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -18,7 +20,7 @@ $(document).ready(function() {
                     } else {
                         return `<span class="badge rounded-pill bg-light">Tidak Aktif</span>`;
                     }
-                }  
+                } 
             },
             { 
                 "data": "aksi",
@@ -40,17 +42,18 @@ $(document).ready(function() {
 
         var url, type, action;
         var data = {
-            kelompokPasien: $('#ed_kelompok_pasien').val(),
+            kecamatan: $('#ed_kecamatan').val(),
+            kabupaten: $('#ed_kabupaten').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
         if (edit === false) {
-            url = 'http://10.10.117.159:5188/api/kelompok-pasien';
+            url = 'http://10.10.117.159:5188/api/kecamatan';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'http://10.10.117.159:5188/api/kelompok-pasien/' + id;
+            url = 'http://10.10.117.159:5188/api/kecamatan/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -99,7 +102,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'http://10.10.117.159:5188/api/kelompok-pasien/' + id,
+                    url: 'http://10.10.117.159:5188/api/kecamatan/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -134,7 +137,7 @@ $(document).ready(function() {
         edit = true;
 
         $.ajax({
-            url: 'http://10.10.117.159:5188/api/kelompok-pasien/' + id,
+            url: 'http://10.10.117.159:5188/api/kecamatan/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -142,7 +145,8 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(res) {
-                $('#ed_kelompok_pasien').val(res.kelompokPasien);
+                $('#ed_kecamatan').val(res.kecamatan);
+                $('#ed_kabupaten').val(res.kabupaten).trigge;
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -155,7 +159,7 @@ $(document).ready(function() {
     });
 
     function clear() {
-        $("#ed_kelompok_pasien").val('');
+        $("#ed_kecamatan").val('');
     }
 });
 
