@@ -3,7 +3,7 @@ $(document).ready(function() {
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "https://national-sharp-point-disable.trycloudflare.com/api/status-pekerjaan",
+            "url": "http://10.10.117.159:5188/api/status-pekerjaan",
             "type": "GET",
             "dataType": "json",
         },
@@ -45,12 +45,12 @@ $(document).ready(function() {
         };
 
         if (edit === false) {
-            url = 'https://national-sharp-point-disable.trycloudflare.com/api/status-pekerjaan';
+            url = 'http://10.10.117.159:5188/api/status-pekerjaan';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'https://national-sharp-point-disable.trycloudflare.com/api/status-pekerjaan/' + id;
+            url = 'http://10.10.117.159:5188/api/status-pekerjaan/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -99,7 +99,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'https://national-sharp-point-disable.trycloudflare.com/api/status-pekerjaan/' + id,
+                    url: 'http://10.10.117.159:5188/api/status-pekerjaan/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -134,7 +134,7 @@ $(document).ready(function() {
         edit = true;
 
         $.ajax({
-            url: 'https://national-sharp-point-disable.trycloudflare.com/api/status-pekerjaan/' + id,
+            url: 'http://10.10.117.159:5188/api/status-pekerjaan/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
