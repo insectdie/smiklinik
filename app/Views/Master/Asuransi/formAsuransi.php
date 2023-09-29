@@ -37,23 +37,56 @@
                             <div class="col-md-6 col-12">
                             <!-- <div class="col-md-6 col-12 mb-4"> -->
                                 <div class="input-group input-daterange" id="bs-datepicker-daterange">
-                                    <input type="text" id="dateRangePicker" placeholder="MM/DD/YYYY" class="form-control" />
+                                    <input type="text" id="ed_tgl_awal" placeholder="MM/DD/YYYY" class="form-control" />
                                     <span class="input-group-text">to</span>
-                                    <input type="text" placeholder="MM/DD/YYYY" class="form-control" />
+                                    <input type="text" id="ed_tgl_akhir" placeholder="MM/DD/YYYY" class="form-control" />
                                 </div>
                         <!-- </div> -->
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="basic-default-name">Kecamatan</label>
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">No Telephone</label>
+                          <div class="col-sm-4">
+                            <input type="text" class="form-control" id="ed_no_telephone" />
+                            <div class="invalid-feedback">Please enter your telephone.</div>
+                          </div>
+                          <div class="col-sm-1"></div>
+                          <label class="col-sm-1 col-form-label" for="basic-default-name">Email</label>
+                          <div class="col-sm-4">
+                            <input type="text" class="form-control" id="ed_email" />
+                            <div class="invalid-feedback">Please enter your email.</div>
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">No MOU</label>
                           <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example" id="ed_kecamatan" name = "ed_kecamatan">
-                                <option selected>Pilih kecamatan</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <input type="text" class="form-control" id="ed_no_mou" />
+                            <div class="invalid-feedback">Please enter your no mou.</div>
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Nama PIC</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="ed_nama_pic" />
+                            <div class="invalid-feedback">Please enter your nama pic.</div>
+                          </div>
+                        </div>
+
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">No HP PIC</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="ed_no_hp_pic" />
+                            <div class="invalid-feedback">Please enter your no hp pic.</div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Keterangan</label>
+                          <div class="col-sm-10">
+                            <textarea class="form-control" id="ed_keterangan" rows="3"></textarea>
+                            <div class="invalid-feedback">Please enter your keterangan.</div>
                           </div>
                         </div>
 
@@ -103,9 +136,10 @@
                       <thead>
                           <tr>
                               <th>No</th>
-                              <th>Kelurahan</th>
-                              <th>ID Kecamatan</th>
-                              <th>Kecamatan</th>
+                              <th>Nama Asuransi</th>
+                              <th>Tgl Kerjasama</th>
+                              <th>No MOU</th>
+                              <th>Status</th>
                               <th>Aksi</th>
                           </tr>
                       </thead>

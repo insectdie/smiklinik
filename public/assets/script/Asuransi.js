@@ -1,17 +1,19 @@
-// "url": "http://10.10.117.159:5188/api/kelurahan",
+// "url": "http://10.10.117.159:5188/api/asuransi",
 $(document).ready(function() {
+    $('.input-daterange').datepicker({});
+
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "http://10.10.117.159:5188/api/kelurahan",
+            "url": "http://10.10.117.159:5188/api/asuransi",
             "type": "GET",
             "dataType": "json",
         },
         "columns": [
             { "data": "id" },
-            { "data": "kelurahan" },
-            { "data": "idKecamatan" },
-            { "data": "kecamatan" },
+            { "data": "asuransi" },
+            { "data": "tgl_kerjasama" },
+            { "data": "no_mou" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -42,18 +44,28 @@ $(document).ready(function() {
 
         var url, type, action;
         var data = {
-            kelurahan: $('#ed_kelurahan').val(),
-            kecamatan: $('#ed_kecamatan').val(),
+            asuransi: $('#ed_asuransi').val(),
+            alamat: $('#ed_alamat').val(),
+            tgl_awal: $('#ed_tgl_awal').val(),
+            tgl_akhir: $('#ed_tgl_akhir').val(),
+            no_telephone: $('#ed_no_telephone').val(),
+            no_mou: $('#ed_no_mou').val(),
+            nama_pic: $('#ed_nama_pic').val(),
+            no_hp_pic: $('#ed_no_hp_pic').val(),
+            keterangan: $('#ed_keterangan').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
+        console.log(data);
+        return;
+
         if (edit === false) {
-            url = 'http://10.10.117.159:5188/api/kelurahan';
+            url = 'http://10.10.117.159:5188/api/asuransi';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'http://10.10.117.159:5188/api/kelurahan/' + id;
+            url = 'http://10.10.117.159:5188/api/asuransi/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -102,7 +114,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'http://10.10.117.159:5188/api/kelurahan/' + id,
+                    url: 'http://10.10.117.159:5188/api/asuransi/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -137,7 +149,7 @@ $(document).ready(function() {
         edit = true;
 
         $.ajax({
-            url: 'http://10.10.117.159:5188/api/kelurahan/' + id,
+            url: 'http://10.10.117.159:5188/api/asuransi/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -145,8 +157,15 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(res) {
-                $('#ed_kelurahan').val(res.kelurahan);
-                $('#ed_kecamatan').val(res.kecamatan).trigge;
+                $('#ed_asuransi').val(res.asuransi);
+                $('#ed_alamat').val(res.alamat);
+                $('#ed_tgl_awal').val(res.tgl_awal);
+                $('#ed_tgl_akhir').val(res.tgl_akhir);
+                $('#ed_no_telephone').val(res.no_telephone);
+                $('#ed_no_mou').val(res.no_mou);
+                $('#ed_nama_pic').val(res.nama_pic);
+                $('#ed_no_hp_pic').val(res.no_hp_pic);
+                $('#ed_keterangan').val(res.keterangan);
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -159,7 +178,15 @@ $(document).ready(function() {
     });
 
     function clear() {
-        $("#ed_kelurahan").val('');
+        $("#ed_asuransi").val('');
+        $('#ed_alamat').val('');
+        $('#ed_tgl_awal').val('');
+        $('#ed_tgl_akhir').val('');
+        $('#ed_no_telephone').val('');
+        $('#ed_no_mou').val('');
+        $('#ed_nama_pic').val('');
+        $('#ed_no_hp_pic').val('');
+        $('#ed_keterangan').val('');
     }
 });
 
