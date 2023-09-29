@@ -14,6 +14,10 @@ $routes->get('StatusKeluarga', '\App\Controllers\StatusKeluarga::index');
 $routes->get('StatusPekerjaan', '\App\Controllers\StatusPekerjaan::index');
 $routes->get('StatusPendidikan', '\App\Controllers\StatusPendidikan::index');
 $routes->get('KelompokPasien', '\App\Controllers\KelompokPasien::index');
+$routes->get('Agama', '\App\Controllers\Agama::index');
+$routes->get('PenanggungBiaya', '\App\Controllers\PenanggungBiaya::index');
+$routes->get('Provinsi', '\App\Controllers\Provinsi::index');
+$routes->get('StatusPernikahan', '\App\Controllers\StatusPernikahan::index');
 
 // $routes->options('(:any)', 'Controller/options');
 

@@ -55,6 +55,26 @@
                     Status Pekerjaan
                   </a>
                 </li>
+                <li class="menu-item <?= ($title === 'Agama') ? 'active' : '' ?>">
+                  <a href="Agama" class="menu-link">
+                    Agama
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Penanggung Biaya') ? 'active' : '' ?>">
+                  <a href="PenanggungBiaya" class="menu-link">
+                    Penanggung Biaya
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Provinsi') ? 'active' : '' ?>">
+                  <a href="Provinsi" class="menu-link">
+                    Provinsi
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Status Pernikahan') ? 'active' : '' ?>">
+                  <a href="StatusPernikahan" class="menu-link">
+                    Status Pernikahan
+                  </a>
+                </li>
                 <!-- <li class="menu-item">
                   <a href="tables-datatables-advanced.html" class="menu-link">
                     <div data-i18n="Advanced">Advanced</div>
