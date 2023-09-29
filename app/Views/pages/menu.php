@@ -45,6 +45,11 @@
                     Kelompok Pasien
                   </a>
                 </li>
+                <li class="menu-item <?= ($title === 'Sub Kelompok Pasien') ? 'active' : '' ?>">
+                  <a href="SubKelompokPasien" class="menu-link">
+                    Sub Kelompok Pasien
+                  </a>
+                </li>
                 <li class="menu-item <?= ($title === 'Status Pendidikan') ? 'active' : '' ?>">
                   <a href="StatusPendidikan" class="menu-link">
                     Status Pendidikan

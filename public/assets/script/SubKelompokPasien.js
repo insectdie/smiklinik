@@ -1,15 +1,17 @@
-// "url": "http://10.10.117.159:5188/api/penanggung-biaya",
+// "url": "http://10.10.117.159:5188/api/sub-kelompok-pasien",
 $(document).ready(function() {
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "http://10.10.117.159:5188/api/penanggung-biaya",
+            "url": "http://10.10.117.159:5188/api/sub-kelompok-pasien",
             "type": "GET",
             "dataType": "json",
         },
         "columns": [
             { "data": "id" },
-            { "data": "penanggungBiaya" },
+            { "data": "subKelompokPasien" },
+            { "data": "idKelompokPasien" },
+            { "data": "kelompokPasien" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -40,17 +42,18 @@ $(document).ready(function() {
 
         var url, type, action;
         var data = {
-            penanggungBiaya: $('#ed_penanggung_biaya').val(),
+            subKelompokPasien: $('#ed_sub_kelompok_pasien').val(),
+            kelompokPasien: $('#ed_kelompok_pasien').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
         if (edit === false) {
-            url = 'http://10.10.117.159:5188/api/penanggung-biaya';
+            url = 'http://10.10.117.159:5188/api/sub-kelompok-pasien';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'http://10.10.117.159:5188/api/penanggung-biaya/' + id;
+            url = 'http://10.10.117.159:5188/api/sub-kelompok-pasien/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -99,7 +102,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'http://10.10.117.159:5188/api/penanggung-biaya/' + id,
+                    url: 'http://10.10.117.159:5188/api/sub-kelompok-pasien/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -134,7 +137,7 @@ $(document).ready(function() {
         edit = true;
 
         $.ajax({
-            url: 'http://10.10.117.159:5188/api/penanggung-biaya/' + id,
+            url: 'http://10.10.117.159:5188/api/sub-kelompok-pasien/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -142,7 +145,8 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(res) {
-                $('#ed_penanggung_biaya').val(res.penanggungBiaya);
+                $('#ed_sub_kelompok_pasien').val(res.subKelompokPasien);
+                $('#ed_kelompok_pasien').val(res.kelompokPasien).trigge;
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -155,7 +159,7 @@ $(document).ready(function() {
     });
 
     function clear() {
-        $("#ed_penanggung_biaya").val('');
+        $("#ed_sub_kelompok_pasien").val('');
     }
 });
 
