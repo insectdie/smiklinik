@@ -1,11 +1,71 @@
-// "url": "http://10.10.117.159:5188/api/asuransi",
+// "url": "http://10.10.117.159:5188/api/registrasi-pasien",
 $(document).ready(function() {
-    $('#bs-datepicker-basic').datepicker({});
+    $('.input-daterange').datepicker({});
+
+    $.ajax({
+        type: 'GET', 
+        url: 'http://10.10.117.159:5188/api/provinsi', 
+        success: function(result) { 
+            var selOpts = "";
+            for (let i=0;i<result.data.length;i++)
+            {
+                var id = result.data[i]['id'];
+                var val = result.data[i]['provinsi'];
+                selOpts += "<option value='"+id+"'>"+val+"</option>";
+            }
+            $('#ed_provinsi').append(selOpts);
+        }
+    });
+
+    $.ajax({
+        type: 'GET', 
+        url: 'http://10.10.117.159:5188/api/kabupaten', 
+        success: function(result) { 
+            var selOpts = "";
+            for (let i=0;i<result.data.length;i++)
+            {
+                var id = result.data[i]['id'];
+                var val = result.data[i]['kabupaten'];
+                selOpts += "<option value='"+id+"'>"+val+"</option>";
+            }
+            $('#ed_kabupaten').append(selOpts);
+        }
+    });
+
+    $.ajax({
+        type: 'GET', 
+        url: 'http://10.10.117.159:5188/api/kecamatan', 
+        success: function(result) { 
+            var selOpts = "";
+            for (let i=0;i<result.data.length;i++)
+            {
+                var id = result.data[i]['id'];
+                var val = result.data[i]['kecamatan'];
+                selOpts += "<option value='"+id+"'>"+val+"</option>";
+            }
+            $('#ed_kecamatan').append(selOpts);
+        }
+    });
+
+    $.ajax({
+        type: 'GET', 
+        url: 'http://10.10.117.159:5188/api/kelurahan', 
+        success: function(result) { 
+            var selOpts = "";
+            for (let i=0;i<result.data.length;i++)
+            {
+                var id = result.data[i]['id'];
+                var val = result.data[i]['kelurahan'];
+                selOpts += "<option value='"+id+"'>"+val+"</option>";
+            }
+            $('#ed_kelurahan').append(selOpts);
+        }
+    });
 
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "http://10.10.117.159:5188/api/asuransi",
+            "url": "http://10.10.117.159:5188/api/registrasi-pasien",
             "type": "GET",
             "dataType": "json",
         },
@@ -66,12 +126,12 @@ $(document).ready(function() {
         // return;
 
         if (edit === false) {
-            url = 'http://10.10.117.159:5188/api/asuransi';
+            url = 'http://10.10.117.159:5188/api/registrasi-pasien';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'http://10.10.117.159:5188/api/asuransi/' + id;
+            url = 'http://10.10.117.159:5188/api/registrasi-pasien/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -120,7 +180,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'http://10.10.117.159:5188/api/asuransi/' + id,
+                    url: 'http://10.10.117.159:5188/api/registrasi-pasien/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -160,7 +220,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: 'http://10.10.117.159:5188/api/asuransi/' + id,
+            url: 'http://10.10.117.159:5188/api/registrasi-pasien/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',

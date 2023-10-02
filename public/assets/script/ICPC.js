@@ -1,19 +1,16 @@
-// "url": "http://10.10.117.159:5188/api/asuransi",
+// "url": "http://10.10.117.159:5188/api/icpc",
 $(document).ready(function() {
-    $('#bs-datepicker-basic').datepicker({});
-
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "http://10.10.117.159:5188/api/asuransi",
+            "url": "http://10.10.117.159:5188/api/icpc",
             "type": "GET",
             "dataType": "json",
         },
         "columns": [
             { "data": "id" },
-            { "data": "asuransi" },
-            { "data": "tanggalKerjasama" },
-            { "data": "noMou" },
+            { "data": "kodeICPC" },
+            { "data": "icpc" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -42,36 +39,20 @@ $(document).ready(function() {
     $("#bt-save").on("click", function() {
         event.preventDefault();
 
-        function reformatDateString(s) {
-            var b = s.split(/\D/);
-            return b.reverse().join('-');
-        }
-
         var url, type, action;
         var data = {
-            asuransi: $('#ed_asuransi').val(),
-            alamat: $('#ed_alamat').val(),
-            tanggalAwal: reformatDateString($('#ed_tgl_awal').val()),
-            tanggalAkhir: reformatDateString($('#ed_tgl_akhir').val()), 
-            noTelp: $('#ed_no_telephone').val(),
-            alamatEmail: $('#ed_email').val(),
-            noMou: $('#ed_no_mou').val(),
-            namaPIC: $('#ed_nama_pic').val(),
-            noHpPIC: $('#ed_no_hp_pic').val(),
-            keterangan: $('#ed_keterangan').val(),
+            kodeICPC: $('#ed_kode_icpc').val(),
+            icpc: $('#ed_icpc').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
-        console.log(data);
-        // return;
-
         if (edit === false) {
-            url = 'http://10.10.117.159:5188/api/asuransi';
+            url = 'http://10.10.117.159:5188/api/icpc';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'http://10.10.117.159:5188/api/asuransi/' + id;
+            url = 'http://10.10.117.159:5188/api/icpc/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -120,7 +101,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'http://10.10.117.159:5188/api/asuransi/' + id,
+                    url: 'http://10.10.117.159:5188/api/icpc/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -154,30 +135,17 @@ $(document).ready(function() {
         id = $(this).data('id');
         edit = true;
 
-        function reformatDateString(s) {
-            var b = s.split(/\D/);
-            return b.reverse().join('/');
-        }
-
         $.ajax({
-            url: 'http://10.10.117.159:5188/api/asuransi/' + id,
+            url: 'http://10.10.117.159:5188/api/icpc/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            dataType: 'json',
+                },
+                dataType: 'json',
             success: function(res) {
-                $('#ed_asuransi').val(res.asuransi);
-                $('#ed_alamat').val(res.alamat);
-                $('#ed_tgl_awal').val(reformatDateString(res.tanggalAwal)); 
-                $('#ed_tgl_akhir').val(reformatDateString(res.tanggalAkhir));
-                $('#ed_no_telephone').val(res.noTelp);
-                $('#ed_email').val(res.alamatEmail);
-                $('#ed_no_mou').val(res.noMou);
-                $('#ed_nama_pic').val(res.namaPIC);
-                $('#ed_no_hp_pic').val(res.noHpPIC);
-                $('#ed_keterangan').val(res.keterangan);
+                $('#ed_kode_icpc').val(res.kodeICPC);
+                $('#ed_icpc').val(res.icpc);
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -190,15 +158,8 @@ $(document).ready(function() {
     });
 
     function clear() {
-        $("#ed_asuransi").val('');
-        $('#ed_alamat').val('');
-        $('#ed_tgl_awal').val('');
-        $('#ed_tgl_akhir').val('');
-        $('#ed_no_telephone').val('');
-        $('#ed_no_mou').val('');
-        $('#ed_nama_pic').val('');
-        $('#ed_no_hp_pic').val('');
-        $('#ed_keterangan').val('');
+        $("#ed_kode_icpc").val('');
+        $("#ed_icpc").val('');
         $("#ed_status").val(1).trigger('change');
     }
 

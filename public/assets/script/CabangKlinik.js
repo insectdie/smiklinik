@@ -1,19 +1,18 @@
-// "url": "http://10.10.117.159:5188/api/asuransi",
+// "url": "http://10.10.117.159:5188/api/cabang-klinik",
 $(document).ready(function() {
-    $('#bs-datepicker-basic').datepicker({});
 
     var table = $('#table').dataTable({
         "processing": true,
         "ajax": {
-            "url": "http://10.10.117.159:5188/api/asuransi",
+            "url": "http://10.10.117.159:5188/api/cabang-klinik",
             "type": "GET",
             "dataType": "json",
         },
         "columns": [
-            { "data": "id" },
-            { "data": "asuransi" },
-            { "data": "tanggalKerjasama" },
-            { "data": "noMou" },
+            { "data": "no" },
+            { "data": "kode" },
+            { "data": "klinik" },
+            { "data": "cabang" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -49,16 +48,13 @@ $(document).ready(function() {
 
         var url, type, action;
         var data = {
-            asuransi: $('#ed_asuransi').val(),
+            kode: $('#ed_kode').val(),
+            klinik: $('#ed_nama_klinik').val(),
+            cabang: $('#ed_nama_cabang').val(),
             alamat: $('#ed_alamat').val(),
-            tanggalAwal: reformatDateString($('#ed_tgl_awal').val()),
-            tanggalAkhir: reformatDateString($('#ed_tgl_akhir').val()), 
-            noTelp: $('#ed_no_telephone').val(),
-            alamatEmail: $('#ed_email').val(),
-            noMou: $('#ed_no_mou').val(),
-            namaPIC: $('#ed_nama_pic').val(),
-            noHpPIC: $('#ed_no_hp_pic').val(),
-            keterangan: $('#ed_keterangan').val(),
+            tlpRumah: $('#ed_tlp_rumah').val(),
+            fax: $('#ed_fax').val(),
+            email: $('#ed_email').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
@@ -66,12 +62,12 @@ $(document).ready(function() {
         // return;
 
         if (edit === false) {
-            url = 'http://10.10.117.159:5188/api/asuransi';
+            url = 'http://10.10.117.159:5188/api/cabang-klinik';
             type = "POST";
             action = "simpan";
             data.userCreated = 1;
         } else {
-            url = 'http://10.10.117.159:5188/api/asuransi/' + id;
+            url = 'http://10.10.117.159:5188/api/cabang-klinik/' + id;
             type = "PUT";
             action = "update";
             data.userUpdated = 1;
@@ -120,7 +116,7 @@ $(document).ready(function() {
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: 'http://10.10.117.159:5188/api/asuransi/' + id,
+                    url: 'http://10.10.117.159:5188/api/cabang-klinik/' + id,
                     type: "DELETE",
                     data: JSON.stringify(data),
                     headers: {
@@ -154,13 +150,8 @@ $(document).ready(function() {
         id = $(this).data('id');
         edit = true;
 
-        function reformatDateString(s) {
-            var b = s.split(/\D/);
-            return b.reverse().join('/');
-        }
-
         $.ajax({
-            url: 'http://10.10.117.159:5188/api/asuransi/' + id,
+            url: 'http://10.10.117.159:5188/api/cabang-klinik/' + id,
             type: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -178,6 +169,14 @@ $(document).ready(function() {
                 $('#ed_nama_pic').val(res.namaPIC);
                 $('#ed_no_hp_pic').val(res.noHpPIC);
                 $('#ed_keterangan').val(res.keterangan);
+
+                $('#ed_kode').val(res.kode);
+                $('#ed_nama_klinik').val(res.klinik);
+                $('#ed_nama_cabang').val(res.cabang);
+                $('#ed_alamat').val(res.alamat);
+                $('#ed_tlp_rumah').val(res.tlpRumah);
+                $('#ed_fax').val(res.fax);
+                $('#ed_email').val(res.email);
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
                     $('#ed_status_aktif').prop('checked', true);
@@ -190,15 +189,13 @@ $(document).ready(function() {
     });
 
     function clear() {
-        $("#ed_asuransi").val('');
+        $('#ed_kode').val('');
+        $('#ed_nama_klinik').val('');
+        $('#ed_nama_cabang').val('');
         $('#ed_alamat').val('');
-        $('#ed_tgl_awal').val('');
-        $('#ed_tgl_akhir').val('');
-        $('#ed_no_telephone').val('');
-        $('#ed_no_mou').val('');
-        $('#ed_nama_pic').val('');
-        $('#ed_no_hp_pic').val('');
-        $('#ed_keterangan').val('');
+        $('#ed_tlp_rumah').val('');
+        $('#ed_fax').val('');
+        $('#ed_email').val('');
         $("#ed_status").val(1).trigger('change');
     }
 

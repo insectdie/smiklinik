@@ -9,7 +9,9 @@ use CodeIgniter\Router\RouteCollection;
 
 
 $routes->get('/', 'Home::index');
+$routes->get('RegistrasiPasien', 'RegistrasiPasien::index');
 
+/* Master */
 $routes->get('StatusKeluarga', '\App\Controllers\StatusKeluarga::index');
 $routes->get('StatusPekerjaan', '\App\Controllers\StatusPekerjaan::index');
 $routes->get('StatusPendidikan', '\App\Controllers\StatusPendidikan::index');
@@ -23,6 +25,10 @@ $routes->get('Kecamatan', '\App\Controllers\Kecamatan::index');
 $routes->get('Kelurahan', '\App\Controllers\Kelurahan::index');
 $routes->get('Asuransi', '\App\Controllers\Asuransi::index');
 $routes->get('StatusPernikahan', '\App\Controllers\StatusPernikahan::index');
+$routes->get('Poli', '\App\Controllers\Poli::index');
+$routes->get('ICD10', '\App\Controllers\ICD10::index');
+$routes->get('ICPC', '\App\Controllers\ICPC::index');
+$routes->get('CabangKlinik', '\App\Controllers\CabangKlinik::index');
 
 // $routes->options('(:any)', 'Controller/options');
 

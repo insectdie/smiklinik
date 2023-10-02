@@ -35,8 +35,36 @@
                 <div data-i18n="Home">Home</div>
               </a>
             </li>
+            <li class="menu-item <?= ($title === 'Registrasi Pasien') ? 'active' : '' ?>">
+              <a href="RegistrasiPasien" class="menu-link">
+                <i class="menu-icon tf-icons mdi mdi-account-outline"></i>
+                <div data-i18n="Registrasi Pasien">Registrasi Pasien</div>
+              </a>
+            </li>
 
-            <li class="menu-item active open">
+            <?php 
+              $master = array(
+                "Status Keluarga", 
+                "Kelompok Pasien", 
+                "Sub Kelompok Pasien", 
+                "Penanggung Biaya",
+                "Asuransi",
+                "Status Pendidikan",
+                "Provinsi",
+                "Kabupaten",
+                "Kecamatan",
+                "Kelurahan",
+                "Status Pekerjaan",
+                "Agama",
+                "Status Pernikahan",
+                "Poli",
+                "ICD 10",
+                "ICPC",
+                "Cabang Klinik"
+              );
+            ?>
+
+            <li class="menu-item <?= (in_array($title, $master)) ? 'active open' : '' ?>">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-grid"></i>
                 Master
@@ -107,6 +135,26 @@
                 <li class="menu-item <?= ($title === 'Status Pernikahan') ? 'active' : '' ?>">
                   <a href="StatusPernikahan" class="menu-link">
                     Status Pernikahan
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Poli') ? 'active' : '' ?>">
+                  <a href="Poli" class="menu-link">
+                    Poli
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'ICD 10') ? 'active' : '' ?>">
+                  <a href="ICD10" class="menu-link">
+                    ICD 10
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'ICPC') ? 'active' : '' ?>">
+                  <a href="ICPC" class="menu-link">
+                    ICPC
+                  </a>
+                </li>
+                <li class="menu-item <?= ($title === 'Cabang Klinik') ? 'active' : '' ?>">
+                  <a href="CabangKlinik" class="menu-link">
+                    Cabang Klinik
                   </a>
                 </li>
                 <!-- <li class="menu-item">
