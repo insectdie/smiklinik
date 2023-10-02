@@ -141,7 +141,7 @@
                           <tr>
                               <th>No</th>
                               <th>Nama Asuransi</th>
-                              <th>Tgl Kerjasama</th>
+                              <th>Tanggal Kerjasama</th>
                               <th>No MOU</th>
                               <th>Status</th>
                               <th>Aksi</th>

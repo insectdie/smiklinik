@@ -29,6 +29,13 @@
               <span class="menu-header-text">Forms &amp; Tables</span>
             </li> -->
             <!-- Tables -->
+            <li class="menu-item">
+              <a href="/" class="menu-link">
+                <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
+                <div data-i18n="Home">Home</div>
+              </a>
+            </li>
+
             <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-grid"></i>
@@ -86,7 +93,7 @@
                     Kelurahan
                   </a>
                 </li>
-                
+
                 <li class="menu-item <?= ($title === 'Status Pekerjaan') ? 'active' : '' ?>">
                   <a href="StatusPekerjaan" class="menu-link">
                     Status Pekerjaan

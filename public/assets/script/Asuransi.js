@@ -12,8 +12,8 @@ $(document).ready(function() {
         "columns": [
             { "data": "id" },
             { "data": "asuransi" },
-            { "data": "tgl_kerjasama" },
-            { "data": "no_mou" },
+            { "data": "tanggalKerjasama" },
+            { "data": "noMou" },
             { 
                 "data": "status",
                 "render": function (data, type, row, meta) {
@@ -42,22 +42,28 @@ $(document).ready(function() {
     $("#bt-save").on("click", function() {
         event.preventDefault();
 
+        function reformatDateString(s) {
+            var b = s.split(/\D/);
+            return b.reverse().join('-');
+        }
+
         var url, type, action;
         var data = {
             asuransi: $('#ed_asuransi').val(),
             alamat: $('#ed_alamat').val(),
-            tgl_awal: $('#ed_tgl_awal').val(),
-            tgl_akhir: $('#ed_tgl_akhir').val(),
-            no_telephone: $('#ed_no_telephone').val(),
-            no_mou: $('#ed_no_mou').val(),
-            nama_pic: $('#ed_nama_pic').val(),
-            no_hp_pic: $('#ed_no_hp_pic').val(),
+            tanggalAwal: reformatDateString($('#ed_tgl_awal').val()),
+            tanggalAkhir: reformatDateString($('#ed_tgl_akhir').val()), 
+            noTelp: $('#ed_no_telephone').val(),
+            alamatEmail: $('#ed_email').val(),
+            noMou: $('#ed_no_mou').val(),
+            namaPIC: $('#ed_nama_pic').val(),
+            noHpPIC: $('#ed_no_hp_pic').val(),
             keterangan: $('#ed_keterangan').val(),
             status: $('input[name="ed_status"]:checked').val(),
         };
 
         console.log(data);
-        return;
+        // return;
 
         if (edit === false) {
             url = 'http://10.10.117.159:5188/api/asuransi';
@@ -148,6 +154,11 @@ $(document).ready(function() {
         id = $(this).data('id');
         edit = true;
 
+        function reformatDateString(s) {
+            var b = s.split(/\D/);
+            return b.reverse().join('/');
+        }
+
         $.ajax({
             url: 'http://10.10.117.159:5188/api/asuransi/' + id,
             type: "GET",
@@ -159,12 +170,13 @@ $(document).ready(function() {
             success: function(res) {
                 $('#ed_asuransi').val(res.asuransi);
                 $('#ed_alamat').val(res.alamat);
-                $('#ed_tgl_awal').val(res.tgl_awal);
-                $('#ed_tgl_akhir').val(res.tgl_akhir);
-                $('#ed_no_telephone').val(res.no_telephone);
-                $('#ed_no_mou').val(res.no_mou);
-                $('#ed_nama_pic').val(res.nama_pic);
-                $('#ed_no_hp_pic').val(res.no_hp_pic);
+                $('#ed_tgl_awal').val(reformatDateString(res.tanggalAwal)); 
+                $('#ed_tgl_akhir').val(reformatDateString(res.tanggalAkhir));
+                $('#ed_no_telephone').val(res.noTelp);
+                $('#ed_email').val(res.alamatEmail);
+                $('#ed_no_mou').val(res.noMou);
+                $('#ed_nama_pic').val(res.namaPIC);
+                $('#ed_no_hp_pic').val(res.noHpPIC);
                 $('#ed_keterangan').val(res.keterangan);
                 if (res.status == 1) {
                     $('#ed_status_tidak_aktif').prop('checked', false);
